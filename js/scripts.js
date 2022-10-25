@@ -6,9 +6,22 @@ function wordCounter(text) {
   }
   let wordCount = 0;
   const textArray = text.split(" ");
-  textArray.forEach(function(element) {
+  textArray.forEach(function (element) {
     if (!Number(element)) {
       wordCount++;
+    }
+  });
+  return wordCount;
+}
+
+function numberOfOccurrencesInText(word, text) {
+  const textArray = text.split(" ");
+  let wordCount = 0;
+  const nonLetters = /[^a-z]/ig;
+
+  textArray.forEach(function (element) {
+    if (word.toLowerCase().replaceAll(nonLetters, "") === element.toLowerCase().replaceAll(nonLetters, "")) {
+      wordCount++
     }
   });
   return wordCount;
